@@ -29,6 +29,7 @@
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -59,6 +60,14 @@
 			<version>0.12.5</version>
 			<scope>runtime</scope>
 		</dependency>
+		<dependency>
+			<groupId>io.github.mjourard</groupId>
+			<artifactId>env-file-maven-plugin</artifactId>
+			<version>2.1.0</version>
+		</dependency>
+
+
+
 
 
 		<dependency>
