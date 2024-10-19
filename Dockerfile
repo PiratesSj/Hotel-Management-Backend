@@ -1,13 +1,11 @@
-# Use an OpenJDK 8 base image
-FROM openjdk:8-jdk-alpine
-COPY . .
+# Stage 1: Build the application
+FROM maven:3.8.6-openjdk-8 AS builder
+COPY . /app
+WORKDIR /app
 RUN mvn clean package -DskipTests
+RUN ls -l target/  # List the contents of the target directory to verify the JAR file is created
 
-# Copy the JAR file from the target directory
-COPY target/Hotel-Managment-0.0.1-SNAPSHOT.jar Hotel-Management.jar
-
-# Expose the port your application will run on
-EXPOSE 8080
-
-# Define the command to run your application
-ENTRYPOINT ["java", "-jar", "Hotel-Management.jar"]
+# Stage 2: Use a lightweight OpenJDK 8 runtime for the final image
+FROM openjdk:8-jdk-alpine
+COPY --from=builder /app/target/Hotel-Management-0.0.1-SNAPSHOT.jar /app/hotel-management.jar
+ENTRYPOINT ["java", "-jar", "/app/hotel-management.jar"]
