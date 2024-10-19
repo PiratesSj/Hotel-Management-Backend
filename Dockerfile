@@ -1,12 +1,14 @@
-# Use an official OpenJDK 8 image as a parent image
+# Use an official OpenJDK 8 image as the base image
 FROM openjdk:8-jdk-alpine
 
-# Set the application's port
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy the JAR file built during the Maven build process
+COPY target/Hotel-Managment-0.0.1-SNAPSHOT.jar app.jar
+
+# Expose the port the application will run on
 EXPOSE 8080
 
-# Add the JAR file and name it
-ARG JAR_FILE=target/Hotel-Managment-0.0.1-SNAPSHOT.jar
-ADD ${JAR_FILE} app.jar
-
-# Run the app using java -jar
-ENTRYPOINT ["java", "-jar", "/app.jar"]
+# Run the application
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]
