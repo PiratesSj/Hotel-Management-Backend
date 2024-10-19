@@ -6,5 +6,5 @@ RUN mvn clean package -DskipTests
 
 # Stage 2: Use a lightweight OpenJDK 8 runtime for the final image
 FROM openjdk:8-jdk-alpine
-COPY --from=builder /app/target/your-app-name.jar /app/your-app-name.jar
-ENTRYPOINT ["java", "-jar", "/app/your-app-name.jar"]
+COPY --from=builder /app/target/hotel-management-0.0.1-SNAPSHOT.jar /app/hotel-management.jar
+ENTRYPOINT ["java", "-jar", "/app/hotel-management.jar"]
