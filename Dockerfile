@@ -1,6 +1,7 @@
 # Stage 1: Build the application
 FROM maven:3.8.6-openjdk-8 AS builder
-COPY . /app
+COPY --from=builder /app/target/Hotel-Managment-0.0.1-SNAPSHOT.jar /app/hotel-management.jar
+
 WORKDIR /app
 RUN mvn clean package -DskipTests
 
