@@ -60,17 +60,11 @@
 			<version>0.12.5</version>
 			<scope>runtime</scope>
 		</dependency>
-		
-
-
-
-
 		<dependency>
-    <groupId>org.projectlombok</groupId>
-    <artifactId>lombok</artifactId>
-    <version>1.18.24</version> <!-- Check for the latest version -->
-    <scope>provided</scope>
-</dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
