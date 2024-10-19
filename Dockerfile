@@ -3,7 +3,7 @@ FROM maven:3.8.6-openjdk-8 AS builder
 COPY . /app
 WORKDIR /app
 RUN mvn clean package -DskipTests
-RUN ls -l target/  # List the contents of the target directory to verify the JAR file is created
+RUN ls -l /app/target/  # Add this line to check the target contents
 
 # Stage 2: Use a lightweight OpenJDK 8 runtime for the final image
 FROM openjdk:8-jdk-alpine
