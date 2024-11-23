@@ -167,5 +167,6 @@ public class PublicController {
     @GetMapping("/health-check")
     public String gethealthcheck(){
         return "Ok";
+    }
 
 }
